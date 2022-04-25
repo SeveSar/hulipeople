@@ -804,33 +804,37 @@ if (menuLinks.length) {
 $(function() {
 
   // toggle-slide mobile menu
-    $('button.js-toggle').on('click', function(e) {
-      e.preventDefault()
-      const $this = $(this);
-      if ($this.next().hasClass('show')) {
-        $this.next().removeClass('show');
-        $this.next().slideUp(350);
-        $this.removeClass('active')
-      } else {
-        $this.next().removeClass('show');
-        $this.next().addClass('show');
-        $this.next().slideToggle(350);
-        $this.addClass('active')
-      }
-    })
-    // toggle slide accordion
-    $('.js-accordion').on('click', function(e) {
-      e.preventDefault()
-      const $this = $(this);
-      const bodyAccordion = $this.find('.js-accordion-body')
-      if ($this.hasClass('show')) {
-        $this.removeClass('show');
-        $(bodyAccordion).slideUp(350);
-      } else {
-        $('.js-accordion-body').slideUp(350);
-        $('.js-accordion').removeClass('show')
-        $this.addClass('show');
-        $(bodyAccordion).slideDown(300);
-      }
-    })
+  $('button.js-toggle').on('click', function(e) {
+    e.preventDefault()
+    const $this = $(this);
+    if ($this.next().hasClass('show')) {
+      $this.next().removeClass('show');
+      $this.next().slideUp(350);
+      $this.removeClass('active')
+    } else {
+      $this.next().removeClass('show');
+      $this.next().addClass('show');
+      $this.next().slideToggle(350);
+      $this.addClass('active')
+    }
+  })
+  // toggle slide accordion
+  $('.js-accordion').on('click', function(e) {
+    e.preventDefault()
+    const $this = $(this);
+    const bodyAccordion = $this.find('.js-accordion-body')
+    if ($this.hasClass('show')) {
+      $this.removeClass('show');
+      $(bodyAccordion).slideUp(350);
+    } else {
+      $('.js-accordion-body').slideUp(350);
+      $('.js-accordion').removeClass('show')
+      $this.addClass('show');
+      $(bodyAccordion).slideDown(300);
+    }
+  })
+
+  // eraser
+  console.log($('.img1'))
+  $(".js-eraser").eraser({size: 45})
 })

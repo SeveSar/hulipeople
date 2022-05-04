@@ -29,22 +29,6 @@ if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
   document.body.classList.add('fireFox')
 }
 console.log(navigator.userAgent.toLowerCase());
-function support_format_webp()
-{
- var elem = document.createElement('canvas');
-
- if (!!(elem.getContext && elem.getContext('2d')))
- {
-  // was able or not to get WebP representation
-  return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
- }
- else
- {
-  // very old browser like IE 8, canvas not supported
-  return false;
- }
-}
-if (support_format_webp()) document.body.classList.add('webp');
 document.addEventListener("DOMContentLoaded",(e) => {
   const menuContents = document.querySelectorAll('.js-menu-content')
 const menuLinks = document.querySelectorAll('.js-menu')
@@ -768,6 +752,33 @@ if (menuLinks.length) {
           content.style.display = 'none'
         }
       })
+    })
+  })
+
+
+})();
+  (function() {
+  const filterAccountsContainers = document.querySelectorAll('.js-filter-container')
+  const filterAccountBigBtns = document.querySelectorAll('.js-filter-account-big-btn');
+  if (!filterAccountsContainers.length) return false
+  filterAccountsContainers.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      const buttonFilter = e.target.closest('.js-filter-account-btn')
+      if (buttonFilter) {
+        const filterContentItems = e.currentTarget.querySelectorAll('.js-filter-account-content')
+        const filter = buttonFilter.getAttribute('data-filter-account');
+        const activeBtn = e.currentTarget.querySelector('.js-filter-account-btn.active');
+        if (activeBtn) activeBtn.classList.remove('active')
+        buttonFilter.classList.add('active')
+        filterContentItems.forEach(item => {
+          const contentFilter = item.getAttribute('data-filter-account-content');
+          if (filter !== contentFilter) {
+            item.style.display = 'none'
+          } else {
+            item.style.display = 'block'
+          }
+        })
+      }
     })
   })
 })();

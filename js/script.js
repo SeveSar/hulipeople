@@ -660,6 +660,21 @@ if (menuLinks.length) {
 
 })
 ;
+
+  // anchor
+  const anchorLingks = document.querySelectorAll('a[data-scroll]');
+  if (anchorLingks.length) {
+    anchorLingks.forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('data-scroll')).scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+    });
+
+  }
 })
 
 $(function() {
@@ -701,11 +716,11 @@ $(function() {
 
 
   // anchor scrolls
-  $(document).on('click', 'a[data-scroll]', function (event) {
-    event.preventDefault();
-    $('html, body').stop().animate({
-        scrollTop: $($.attr(this, 'data-scroll')).offset().top
-    }, 100);
-  });
+  // $(document).on('click', 'a[data-scroll]', function (event) {
+  //   event.preventDefault();
+  //   $('html, body').stop().animate({
+  //       scrollTop: $($.attr(this, 'data-scroll')).offset().top
+  //   }, 100);
+  // });
 
 })

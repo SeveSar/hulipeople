@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded",(e) => {
   const menuContents = document.querySelectorAll('.js-menu-content')
 const menuLinks = document.querySelectorAll('.js-menu')
 
+console.log(menuLinks)
 function removeActiveClasses(idxContent) {
   for (let i = 0; i < menuContents.length; i++) {
     if (+idxContent !== +(menuContents[i].getAttribute('data-menu-content'))) {
@@ -73,53 +74,8 @@ if (menuLinks.length) {
     })
   })
 
-  // function showActiveClassNavContent(array, currentContent) {
-  //   array.forEach(item => item.classList.remove('active'))
-  //   currentContent.classList.add('active')
-  // }
-  // bodyNavItems.forEach(item => {
-  //   item.addEventListener('click', (e) => {
-  //     const navBtn = e.target.closest('button[nav-btn-js]')
-  //     if (navBtn && !navBtn.classList.contains('active') && navBtn.hasAttribute('has-content')) {
-  //       const activeBtn = e.currentTarget.querySelector('button[nav-btn-js].active');
-  //       activeBtn.classList.remove('active')
-  //       navBtn.classList.add('active')
-  //       const navContentItems = e.currentTarget.querySelectorAll('.nav-content')
-  //       const indexContent = navBtn.getAttribute('nav-content')
-  //       showActiveClassNavContent(navContentItems, navContentItems[indexContent])
-  //     }
-  //   })
-  // })
 }
 
-
-// if-touchpad
-
-// const navLinkItems = document.querySelectorAll('.nav .nav__list-item[has-content] > button')
-// const bodyNavLinkItems = document.querySelectorAll('.nav .nav__list-item[has-content] .body-nav')
-// function removeActiveClassBodyNav(number) {
-//   for (let i = 0; i < bodyNavLinkItems.length; i++) {
-//     if (+number !== +(bodyNavLinkItems[i].getAttribute('number-content'))) {
-//       bodyNavLinkItems[i].classList.remove('active')
-//       navLinkItems[i].classList.remove('active')
-//     }
-//   }
-// }
-// function toggleClassActiveBodyNav(bodyNav, btn) {
-//   bodyNav.classList.toggle('active')
-//   btn.classList.toggle('active')
-// }
-// if (isMobile.any()) {
-//   navLinkItems.forEach(btn => {
-//     btn.addEventListener('click', (e) => {
-//       const parentItem = e.currentTarget.closest('.nav__list-item[has-content]')
-//       const bodyNavItem = parentItem.querySelector('.body-nav')
-//       removeActiveClassBodyNav(bodyNavItem.getAttribute('number-content'))
-//       toggleClassActiveBodyNav(bodyNavItem, e.currentTarget)
-
-//     })
-//   })
-// }
 ;
   (function() {
   const burgerBtn = document.querySelector('.js-burger');
@@ -176,9 +132,7 @@ if (menuLinks.length) {
   // slider-buttons
   const buttonsContainer_1 = document.querySelector('.swiper-buttons-slider');
   let sliderButtons_1;
-  function mobileSliderButtons_1() {
-    if (!buttonsContainer_1) return false
-    if (document.documentElement.clientWidth <= 1138 && buttonsContainer_1.dataset.mobile === 'false') {
+    if (buttonsContainer_1) {
       sliderButtons_1 = new Swiper(buttonsContainer_1, {
         slidesPerView: 4,
         spaceBetween: 10,
@@ -195,6 +149,9 @@ if (menuLinks.length) {
             },
             870: {
               slidesPerView: 8,
+            },
+            992: {
+              slidesPerView: 8.3,
             }
         },
         navigation: {
@@ -202,53 +159,39 @@ if (menuLinks.length) {
         }
       })
 
-      buttonsContainer_1.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1138) {
-      buttonsContainer_1.dataset.mobile = 'false'
-      if (buttonsContainer_1.classList.contains('swiper-container-initialized')) {
-        sliderButtons_1.destroy()
-      }
     }
-  }
-  let sliderButtons_2;
-  const buttonsContainer_2 = document.querySelector('.swiper-buttons-slider-minni')
-  function mobileSliderButtons_2() {
-    if (!buttonsContainer_2) return false
-    console.log(buttonsContainer_2.closest('.slider-buttons').querySelector('.buttons-button-next'))
-    if (document.documentElement.clientWidth <= 1230 && buttonsContainer_2.dataset.mobile === 'false') {
-      sliderButtons_2 = new Swiper(buttonsContainer_2, {
-        // slidesPerView: 3,
-        spaceBetween: 10,
-        speed: 700,
-        breakpoints: {
-          320: {
-            slidesPerView: 2.4,
-          },
-          600: {
-            slidesPerView: 4,
-          },
-          760: {
-            slidesPerView: 5,
-          },
-          1225: {
-            slidesPerView: 6,
-          }
-        },
-        navigation: {
-          nextEl:'.buttons-button-next_2'
-        }
-      })
 
-      buttonsContainer_2.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1230) {
-      buttonsContainer_2.dataset.mobile = 'false'
-      if (buttonsContainer_2.classList.contains('swiper-container-initialized')) {
-        sliderButtons_2.destroy()
-      }
+  let sliderButtons_2;
+  const buttonsContainer_2 = document.querySelectorAll('.swiper-buttons-slider-minni')
+    if (buttonsContainer_2.length) {
+      buttonsContainer_2.forEach(ct => {
+        sliderButtons_2 = new Swiper(ct, {
+          spaceBetween: 10,
+          speed: 700,
+          breakpoints: {
+            320: {
+              slidesPerView: 2.4,
+            },
+            600: {
+              slidesPerView: 4,
+            },
+            760: {
+              slidesPerView: 5,
+            },
+            1225: {
+              slidesPerView: 6,
+              spaceBetween: 17,
+            }
+          },
+          navigation: {
+            nextEl:'.buttons-button-next_2'
+          }
+        })
+      })
     }
-  }
-  mobileSliderButtons_1()
-  mobileSliderButtons_2()
+
+
+
 
 
   // slider -team
@@ -354,9 +297,7 @@ if (menuLinks.length) {
   // siwper-buttons-rating
   const buttonsContainer_3 = document.querySelector('.swiper-buttons-slider--rating');
   let sliderButtons_3;
-  function mobileSliderButtons_3() {
-    if (!buttonsContainer_3) return false
-    if (document.documentElement.clientWidth <= 1138 && buttonsContainer_3.dataset.mobile === 'false') {
+    if (buttonsContainer_3) {
       sliderButtons_3 = new Swiper(buttonsContainer_3, {
         slidesPerView: 3.5,
         spaceBetween: 20,
@@ -377,22 +318,17 @@ if (menuLinks.length) {
           930: {
             slidesPerView: 7,
             spaceBetween: 15,
+          },
+          1199: {
+            slidesPerView: 8,
+            spaceBetween: 15,
           }
         },
         navigation: {
           nextEl: '.buttons-button-next',
         }
       })
-
-      buttonsContainer_3.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1138) {
-      buttonsContainer_3.dataset.mobile = 'false'
-      if (buttonsContainer_3.classList.contains('swiper-container-initialized')) {
-        sliderButtons_3.destroy()
-      }
     }
-  }
-  mobileSliderButtons_3()
 
   // slider-youtube
   const youtubeSliderContainer = document.querySelector('.swiper-youtube');
@@ -431,7 +367,8 @@ if (menuLinks.length) {
             spaceBetween: 20,
             loopAdditionalSlides: 3,
             centeredSlides: true,
-          }
+          },
+
         },
       })
     }
@@ -439,9 +376,7 @@ if (menuLinks.length) {
     // siwper-buttons-four
   const buttonsContainer_4 = document.querySelector('.swiper-buttons-slider-four');
   let sliderButtons_4;
-  function mobileSliderButtons_4() {
-    if (!buttonsContainer_4) return false
-    if (document.documentElement.clientWidth <= 1138 && buttonsContainer_4.dataset.mobile === 'false') {
+    if (buttonsContainer_4) {
       sliderButtons_4 = new Swiper(buttonsContainer_4, {
         slidesPerView: 3,
         spaceBetween: 20,
@@ -465,23 +400,13 @@ if (menuLinks.length) {
         }
       })
 
-      buttonsContainer_4.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1138) {
-      buttonsContainer_4.dataset.mobile = 'false'
-      if (buttonsContainer_4.classList.contains('swiper-container-initialized')) {
-        sliderButtons_4.destroy()
-      }
     }
-  }
-  mobileSliderButtons_4()
 
   // swiper-buttons-slider-five
 
   const buttonsContainer_5 = document.querySelector('.swiper-buttons-slider-five');
   let sliderButtons_5;
-  function mobileSliderButtons_5() {
-    if (!buttonsContainer_5) return false
-    if (document.documentElement.clientWidth <= 1138 && buttonsContainer_5.dataset.mobile === 'false') {
+    if (buttonsContainer_5) {
       sliderButtons_5 = new Swiper(buttonsContainer_5, {
         slidesPerView: 2.3,
         spaceBetween: 20,
@@ -504,22 +429,11 @@ if (menuLinks.length) {
           nextEl: '.buttons-button-next_4',
         }
       })
-
-      buttonsContainer_5.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1138) {
-      buttonsContainer_5.dataset.mobile = 'false'
-      if (buttonsContainer_5.classList.contains('swiper-container-initialized')) {
-        sliderButtons_5.destroy()
-      }
     }
-  }
-  mobileSliderButtons_5()
 
   const buttonsContainer_6 = document.querySelector('.swiper-buttons-slider-five_2');
   let sliderButtons_6;
-  function mobileSliderButtons_6() {
-    if (!buttonsContainer_6) return false
-    if (document.documentElement.clientWidth <= 1138 && buttonsContainer_6.dataset.mobile === 'false') {
+    if (buttonsContainer_6) {
       sliderButtons_6 = new Swiper(buttonsContainer_6, {
         slidesPerView: 2.3,
         spaceBetween: 20,
@@ -542,22 +456,12 @@ if (menuLinks.length) {
           nextEl: '.buttons-button-next_5',
         }
       })
-
-      buttonsContainer_6.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1138) {
-      buttonsContainer_6.dataset.mobile = 'false'
-      if (buttonsContainer_5.classList.contains('swiper-container-initialized')) {
-        sliderButtons_6.destroy()
-      }
     }
-  }
-  mobileSliderButtons_6()
+
 
   const buttonsContainer_7 = document.querySelector('.swiper-buttons-slider-five_3');
   let sliderButtons_7;
-  function mobileSliderButtons_7() {
-    if (!buttonsContainer_6) return false
-    if (document.documentElement.clientWidth <= 1138 && buttonsContainer_7.dataset.mobile === 'false') {
+    if (buttonsContainer_7)  {
       sliderButtons_7 = new Swiper(buttonsContainer_7, {
         slidesPerView: 2.3,
         spaceBetween: 20,
@@ -580,22 +484,13 @@ if (menuLinks.length) {
           nextEl: '.buttons-button-next_6',
         }
       })
-
-      buttonsContainer_7.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1138) {
-      buttonsContainer_7.dataset.mobile = 'false'
-      if (buttonsContainer_7.classList.contains('swiper-container-initialized')) {
-        sliderButtons_7.destroy()
-      }
     }
-  }
-  mobileSliderButtons_7()
+
+
 
   const buttonsContainer_8 = document.querySelector('.swiper-buttons-slider-five_4');
   let sliderButtons_8;
-  function mobileSliderButtons_8() {
-    if (!buttonsContainer_8) return false
-    if (document.documentElement.clientWidth <= 1138 && buttonsContainer_8.dataset.mobile === 'false') {
+    if (buttonsContainer_8) {
       sliderButtons_8 = new Swiper(buttonsContainer_8, {
         slidesPerView: 2.3,
         spaceBetween: 20,
@@ -618,89 +513,45 @@ if (menuLinks.length) {
           nextEl: '.buttons-button-next_7',
         }
       })
-
-      buttonsContainer_8.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1138) {
-      buttonsContainer_8.dataset.mobile = 'false'
-      if (buttonsContainer_8.classList.contains('swiper-container-initialized')) {
-        sliderButtons_8.destroy()
-      }
     }
-  }
-  mobileSliderButtons_8()
 
   const buttonsContainer_9 = document.querySelector('.swiper-buttons-slider-six');
   let sliderButtons_9;
-  function mobileSliderButtons_9() {
-    if (!buttonsContainer_9) return false
-    if (document.documentElement.clientWidth <= 1138 && buttonsContainer_9.dataset.mobile === 'false') {
-      sliderButtons_9 = new Swiper(buttonsContainer_9, {
-        slidesPerView: 2.5,
+  sliderButtons_9 = new Swiper(buttonsContainer_9, {
+    slidesPerView: 2.5,
+    spaceBetween: 20,
+    speed: 700,
+    breakpoints: {
+      320: {
+        slidesPerView: 2.3,
+        spaceBetween: 10,
+      },
+      575: {
+        slidesPerView: 3.5,
+        spaceBetween: 15,
+      },
+      768: {
+        slidesPerView: 4.5,
         spaceBetween: 20,
-        speed: 700,
-        breakpoints: {
-          320: {
-            slidesPerView: 2.3,
-            spaceBetween: 10,
-          },
-          575: {
-            slidesPerView: 3.5,
-            spaceBetween: 15,
-          },
-          768: {
-            slidesPerView: 4.5,
-            spaceBetween: 20,
-          },
-          1130: {
-            slidesPerView: 5,
-            spaceBetween: 20,
-          }
-        },
-        navigation: {
-          nextEl: '.buttons-button-next_9',
-        }
-      })
-
-      buttonsContainer_9.dataset.mobile = 'true'
-    } else if (document.documentElement.clientWidth > 1138) {
-      buttonsContainer_9.dataset.mobile = 'false'
-      if (buttonsContainer_9.classList.contains('swiper-container-initialized')) {
-        sliderButtons_9.destroy()
+      },
+      1130: {
+        slidesPerView: 5,
+        spaceBetween: 20,
+      },
+      1135: {
+        slidesPerView: 6,
+        spaceBetween: 20,
       }
+    },
+    navigation: {
+      nextEl: '.buttons-button-next_9',
     }
-  }
-  mobileSliderButtons_9()
+  })
+
 
   window.addEventListener('resize', (e) => {
     if (indigoContainer) {
       mobileSliderIndigo()
-    }
-    if (buttonsContainer_1) {
-      mobileSliderButtons_1()
-    }
-    if (buttonsContainer_2) {
-      mobileSliderButtons_2()
-    }
-    if (buttonsContainer_3) {
-      mobileSliderButtons_3()
-    }
-    if (buttonsContainer_4) {
-      mobileSliderButtons_4()
-    }
-    if (buttonsContainer_5) {
-      mobileSliderButtons_5()
-    }
-    if (buttonsContainer_6) {
-      mobileSliderButtons_6()
-    }
-    if (buttonsContainer_7) {
-      mobileSliderButtons_7()
-    }
-    if (buttonsContainer_8) {
-      mobileSliderButtons_8()
-    }
-    if (buttonsContainer_9) {
-      mobileSliderButtons_9()
     }
   });
 })();
@@ -809,7 +660,6 @@ if (menuLinks.length) {
 
 })
 ;
-
 })
 
 $(function() {
@@ -846,6 +696,16 @@ $(function() {
   })
 
   // eraser
-  console.log($('.img1'))
+
   $(".js-eraser").eraser({size: 45})
+
+
+  // anchor scrolls
+  $(document).on('click', 'a[data-scroll]', function (event) {
+    event.preventDefault();
+    $('html, body').stop().animate({
+        scrollTop: $($.attr(this, 'data-scroll')).offset().top
+    }, 100);
+  });
+
 })

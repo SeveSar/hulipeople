@@ -612,7 +612,7 @@
             <div class="drop-inside__content active js-inside-content" data-inside-content="0">
               <nav class="drop-inside__nav">
                 <div class="drop-inside__col">
-                  <a class="drop-inside__link" href="#">Продуктовые партнерки</a>
+                  <a class="drop-inside__link" href="/education.html#videos">Профессии</a>
                   <a class="drop-inside__link" href="#">Продуктовые партнерки</a>
                   <a class="drop-inside__link" href="#">Продуктовые партнерки</a>
                   <a class="drop-inside__link" href="#">Продуктовые партнерки</a>
@@ -1930,48 +1930,62 @@
             <form class="form">
               <h2 class="form__title section-title section-title--text">Оставить отзыв</h2>
               <div class="form__body">
-                <div class="form-wrap d-flex">
-                  <div class="form-group form-group--border">
-                    <input type="text" class="form-control" placeholder="Ваше имя" />
-                    <span class="border-line"></span>
+                <div class="form__body-controls">
+                  <div class="form-wrap d-flex">
+                    <div class="form-group form-group--border">
+                      <input type="text" class="form-control" placeholder="Ваше имя" />
+                      <span class="border-line"></span>
+                    </div>
+                    <div class="form-group form-group--border">
+                      <input type="email" class="form-control" placeholder="E-mail (не обязательно)" />
+                      <span class="border-line"></span>
+                    </div>
                   </div>
-                  <div class="form-group form-group--border">
-                    <input type="email" class="form-control" placeholder="E-mail (не обязательно)" />
-                    <span class="border-line"></span>
+                  <div class="form-wrap form-wrap--radio d-flex">
+                    <div class="form-group form-group--radio">
+                      <input id="choose-1" type="radio" class="form-control form-control--radio" name="choose">
+                      <label for="choose-1" class="choose good">Хорошо</label>
+                    </div>
+                    <div class="form-group form-group--radio">
+                      <input id="choose-2" type="radio" class="form-control form-control--radio" name="choose">
+                      <label for="choose-2" class="choose normal">Нормально</label>
+                    </div>
+                    <div class="form-group form-group--radio">
+                      <input id="choose-3" type="radio" class="form-control form-control--radio" name="choose">
+                      <label for="choose-3" class="choose bad">Плохо</label>
+                    </div>
+                  </div>
+                  <div class="form-wrap">
+                    <div class="form-group form-group--border">
+                      <input type="text" class="form-control" placeholder="Тема отзыва" />
+                      <span class="border-line"></span>
+                    </div>
+                  </div>
+                  <div class="form-wrap">
+                    <div class="form-group form-group--border" tabindex="0">
+                      <textarea class="form-control form-control--area" placeholder="Ваш комментарий"></textarea>
+                      <span class="border-line"></span>
+                    </div>
+                  </div>
+                  <div class="form-wrap">
+                    <div class="form-group form-group--file">
+                      <input id="file" type="file" class="form-control form-control--file js-input-file" placeholder="Ваше имя" accept="image/png, image/gif, image/jpeg" />
+                      <label for="file">
+                        Прикрепите до 3-х фотографий
+                      </label>
+                    </div>
                   </div>
                 </div>
-                <div class="form-wrap form-wrap--radio d-flex">
-                  <div class="form-group form-group--radio">
-                    <input id="choose-1" type="radio" class="form-control form-control--radio" name="choose">
-                    <label for="choose-1" class="choose good">Хорошо</label>
-                  </div>
-                  <div class="form-group form-group--radio">
-                    <input id="choose-2" type="radio" class="form-control form-control--radio" name="choose">
-                    <label for="choose-2" class="choose normal">Нормально</label>
-                  </div>
-                  <div class="form-group form-group--radio">
-                    <input id="choose-3" type="radio" class="form-control form-control--radio" name="choose">
-                    <label for="choose-3" class="choose bad">Плохо</label>
-                  </div>
-                </div>
-                <div class="form-wrap">
-                  <div class="form-group form-group--border">
-                    <input type="text" class="form-control" placeholder="Тема отзыва" />
-                    <span class="border-line"></span>
-                  </div>
-                </div>
-                <div class="form-wrap">
-                  <div class="form-group form-group--border" tabindex="0">
-                    <textarea class="form-control form-control--area" placeholder="Ваш комментарий"></textarea>
-                    <span class="border-line"></span>
-                  </div>
-                </div>
-                <div class="form-wrap">
-                  <div class="form-group form-group--file">
-                    <input id="file" type="file" class="form-control form-control--file" placeholder="Ваше имя" accept="image/png, image/gif, image/jpeg" />
-                    <label for="file">
-                      Прикрепите до 3-х фотографий
-                    </label>
+                <div class="images-container">
+                  <div class="images-container__col">
+                    <div class="images-container__item">
+                      <img src="./img/banner-img_2.png" alt="">
+                      <div class="images-container__item-info">
+                        <div class="images-container__item-name">Lorem ipsum </div>
+                        <div class="images-container__item-size">2222 kb</div>
+                        <button>Удалить</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
